@@ -1,3 +1,5 @@
+use rand::Rng;
+
 #[derive(Debug, Clone, PartialEq)]
 enum Cell {
     Dead,
@@ -87,15 +89,24 @@ impl Matrix {
         }
     }
 
+    fn fill_randomly(&mut self) {
+        for i in 0..self.width {
+            for j in 0..self.height {
+                let r = rand::thread_rng().gen_range(0..2);
+                match r {
+                    0 => self.set_cell(i, j, Cell::Dead),
+                    _ => self.set_cell(i, j, Cell::Alive),
+                }
+            }
+        }
+    }
+
 
 }
 
 fn main() {
     let mut matrix = Matrix::new(10, 10);
-    matrix.set_cell(5, 5, Cell::Alive);
-    matrix.set_cell(5, 6, Cell::Alive);
-    matrix.set_cell(5, 7, Cell::Alive);
-    matrix.set_cell(5, 4, Cell::Alive);
+    matrix.fill_randomly();
 
     println!("welcome to the game of life");
     loop {
