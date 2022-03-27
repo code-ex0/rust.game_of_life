@@ -6,7 +6,8 @@ this project is implementation of [Game of Life](https://en.wikipedia.org/wiki/C
 
 ## Life or death
 
-for print the grid I just use `println!` macro. 
+for print the grid I just use `println!` macro.
+
 ![pictures life or death](assets/real_render.png)
 
 All characters in the grid are `' '` or `'*'` if the cell is alive he prints `'*'` otherwise `' '`.
